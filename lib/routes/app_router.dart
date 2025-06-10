@@ -5,11 +5,10 @@ import 'package:go_router/go_router.dart';
 import '../presentations/screens/auth/add_information_screen.dart';
 import '../presentations/screens/auth/login_screen.dart';
 import '../presentations/screens/auth/spalsh_screen.dart';
+import '../presentations/screens/ticket_detail_screen.dart';
+import '../presentations/screens/destination_detail.dart' show DestinationDetailPage;
 import '../presentations/screens/home_screen.dart';
 import '../presentations/screens/profile_screen.dart';
-import '../presentations/screens/tracker/mood_tracker_screen.dart';
-import '../presentations/screens/tracker/sleep_tracker_screen.dart';
-import '../presentations/screens/tracker/stress_tracker_screen.dart';
 
 
 
@@ -36,11 +35,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             name: 'login',
             builder: (context, state) => LoginScreen(),
           ),
-          GoRoute(
-            path: '/onboarding',
-            name: 'onboarding',
-            builder: (context, state) => AddInformationScreen(), // Onboarding screen
-          ),
         ],
       ),
 
@@ -63,29 +57,70 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         ],
       ),
 
-      // Tracker Routes (Protected)
+
+      // In your GoRouter configuration:
       GoRoute(
-        path: '/tracker',
-        name: 'tracker',
-        redirect: (context, state) => '/home', // Default redirect to home
-        routes: [
-          GoRoute(
-            path: 'mood',
-            name: 'mood-tracker',
-            builder: (context, state) => MoodTrackerScreen(),
-          ),
-          GoRoute(
-            path: 'sleep',
-            name: 'sleep-tracker',
-            builder: (context, state) => SleepTrackerScreen(),
-          ),
-          GoRoute(
-            path: 'stress',
-            name: 'stress-tracker',
-            builder: (context, state) => StressTrackerScreen(),
-          ),
-        ],
+        path: '/destination/:id',
+        name: 'destination',
+        builder: (context, state) {
+          final String? idParam = state.pathParameters['id'];
+          final int id = int.tryParse(idParam ?? '1') ?? 1;
+          return DestinationDetailPage(id: id);
+        },
       ),
+
+
+// Tambahkan route ini di GoRouter configuration Anda:
+      GoRoute(
+        path: '/destination/:destinationId/ticket/:ticketId',
+        name: 'ticket_detail',
+        builder: (context, state) {
+          final String? destinationIdParam = state.pathParameters['destinationId'];
+          final String? ticketIdParam = state.pathParameters['ticketId'];
+
+          // Parse to int with error handling
+          final int destinationId = int.tryParse(destinationIdParam ?? '1') ?? 1;
+          final int ticketId = int.tryParse(ticketIdParam ?? '1') ?? 1;
+
+          return TicketDetailPage(
+            destinationId: destinationId,
+            ticketId: ticketId,
+          );
+        },
+      ),
+
+
+      // // property
+      // GoRoute(
+      //   path: '/cart',
+      //   name: 'cart',
+      //   redirect: (context, state) => '/cart', // Default redirect to home
+      //   routes: [
+      //     GoRoute(
+      //       path: '',
+      //       name: 'cart',
+      //       builder: (context, state) => CartScreen(),
+      //     )
+      //   ],
+      // ),
+      // // property
+      // GoRoute(
+      //   path: '/property',
+      //   name: 'property',
+      //   redirect: (context, state) => '/property', // Default redirect to home
+      //   routes: [
+      //     GoRoute(
+      //       path: 'detail/:id',
+      //       name: 'property-detail',
+      //       // aku mau kirim id ke PropertyDetailScreen
+      //       id := state.params['id']
+      //       builder: (context, state) => PropertyDetailScreen(id),
+      //     )
+      //   ],
+      // ),
+
+
+
     ],
 
     // halaman 404 sederhana

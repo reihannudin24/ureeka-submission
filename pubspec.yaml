@@ -27,6 +27,15 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
-
   uses-material-design: true
+
+  assets:
+    - assets
+    - assets/bg.png
+    - assets/logo.png
+    - assets/destinations/australia.png
+    - assets/destinations/china.png
+    - assets/destinations/japan.png
+    - assets/destinations/korea.png
+
 
