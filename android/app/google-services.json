@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "67911557505",
+    "project_id": "ureeka-reihan",
+    "storage_bucket": "ureeka-reihan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67911557505:android:d867631f2fb1a9a6260880",
+        "android_client_info": {
+          "package_name": "com.example.submission"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67911557505-b9d6j518tvk2bs1ftop85um1np2sauj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.submission",
+            "certificate_hash": "e57727120e4dea1c4e595166af2bb7f3f08e937e"
+          }
+        },
+        {
+          "client_id": "67911557505-7s7obhrfblhim4v7rjn40kmsqntqkrvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3Xg6chaftFJ_E4iz-Vgb8LDuwEte3x3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67911557505-1q0b83pgcd8srd40ml1i3rin4pafhubo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
